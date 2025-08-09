@@ -41,11 +41,13 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost] //http://localhost:[port]/api/notes/ // Означува POST барање на /api/notes
-        public IActionResult Post([FromBody] string newNote)
+        public IActionResult Post([FromBody] string newNote) // [FromBody] е атрибут кој кажува дека вредноста на параметарот newNote треба да се прочита од телото (body) на HTTP барањето.
         {
             try
             {
                 using (StreamReader reader = new StreamReader(Request.Body)) //Читање од body како stream
+                // Request.Body е поток(stream) кој го содржи телото на HTTP барањето(HTTP request body). Тоа е податокот што клиентот го праќа со POST барањето. 
+                // StreamReader е помошна класа во .NET која го чита текстот од stream (поток). Тоа значи дека го зема непрекинатиот поток на податоци од Request.Body и го претвора во стринг кој можеме да го користиме во кодот.
                 {
                     {
                     //string newNote = reader.ReadToEnd();
