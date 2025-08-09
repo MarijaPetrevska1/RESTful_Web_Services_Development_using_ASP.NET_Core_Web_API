@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http; // Простор за имиња за работа со HTTP (Status Codes, Request, Response)
+using Microsoft.AspNetCore.Mvc; // Простор за имиња за MVC и API контролери
 
 namespace WebApplication1.Controllers
 {
     [Route("api/[controller]")] //http://localhost:[port]/api/notes
-    [ApiController]
+    [ApiController] // Го прави контролерот -> API контролер
     public class NotesController : ControllerBase
     {
         [HttpGet] //http://localhost:[port]/api/notes
@@ -14,7 +14,7 @@ namespace WebApplication1.Controllers
             return BadRequest(StaticDb.SimpleNotes);
         }
 
-        [HttpGet("{index}")] ////http://localhost:[port]/api/notes/1
+        [HttpGet("{index}")] ////http://localhost:[port]/api/notes/1 // Означува GET со параметар /api/notes/{index}
         public ActionResult<string> GetByIndex(int index)
         {
             try
@@ -40,13 +40,14 @@ namespace WebApplication1.Controllers
             }
         }
 
-        [HttpPost] //http://localhost:[port]/api/notes/
+        [HttpPost] //http://localhost:[port]/api/notes/ // Означува POST барање на /api/notes
         public IActionResult Post([FromBody] string newNote)
         {
             try
             {
-                using (StreamReader reader = new StreamReader(Request.Body))
+                using (StreamReader reader = new StreamReader(Request.Body)) //Читање од body како stream
                 {
+                    {
                     //string newNote = reader.ReadToEnd();
 
                     //if (string.IsNullOrEmpty(newNote))
