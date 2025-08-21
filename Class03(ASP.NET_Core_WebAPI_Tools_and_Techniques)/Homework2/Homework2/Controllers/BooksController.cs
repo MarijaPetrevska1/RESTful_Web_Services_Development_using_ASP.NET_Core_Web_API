@@ -116,6 +116,8 @@ namespace Homework2.Controllers
                     return BadRequest("List of books is required.");
                 }
 
+                StaticDb.Books.AddRange(books);
+
                 List<string> titles = books.Select(b => b.Title).ToList();
                 return Ok(titles);
             }
