@@ -9,6 +9,9 @@ namespace Avenga.NotesApp.Controllers
     {
         private readonly INoteService _noteService;
 
+        // Контролерот добива INoteService преку конструктор.
+
+        // DI(што го конфигуриравме во DependencyInjectionHelper) ќе даде NoteService, кој пак работи со репозиториуми и DbContext.
         public NotesController(INoteService noteService)
         {
             _noteService = noteService;

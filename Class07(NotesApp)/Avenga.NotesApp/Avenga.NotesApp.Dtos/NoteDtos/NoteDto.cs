@@ -10,3 +10,6 @@ namespace Avenga.NotesApp.Dtos.NoteDtos
         public string UserFullName { get; set; }
     }
 }
+
+
+// NoteDto → излезни податоци кога враќаш резултат (GET /notes, GET /notes/{id}).

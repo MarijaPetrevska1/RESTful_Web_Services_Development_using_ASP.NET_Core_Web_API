@@ -1,4 +1,5 @@
 ﻿using Avenga.NotesApp.Domain.Enums;
+using Avenga.NotesApp.Dtos.NoteDtos;
 
 namespace Avenga.NotesApp.Dtos.NoteDtos
 {
@@ -10,3 +11,6 @@ namespace Avenga.NotesApp.Dtos.NoteDtos
         public int UserId { get; set; }
     }
 }
+
+
+// AddNoteDto → влезни податоци за POST /notes.

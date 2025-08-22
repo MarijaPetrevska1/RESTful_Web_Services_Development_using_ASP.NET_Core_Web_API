@@ -11,9 +11,10 @@ builder.Services.AddSwaggerGen();
 
 //Dependency Injection
 DependencyInjectionHelper.InjectDbContext(builder.Services);
-DependencyInjectionHelper.InjectRepositories(builder.Services);
-DependencyInjectionHelper.InjectServices(builder.Services);
+DependencyInjectionHelper.InjectRepositories(builder.Services); // registrira konkretni repozitoriumi za Note i User
+DependencyInjectionHelper.InjectServices(builder.Services); // Registrira service sloj : INoteService -> NoteService
 
+// AddTransient значи дека секој пат кога ќе се побара, DI креира нова инстанца.
 
 var app = builder.Build();
 

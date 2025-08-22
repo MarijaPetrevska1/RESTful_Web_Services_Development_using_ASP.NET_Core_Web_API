@@ -2,6 +2,8 @@
 
 namespace Avenga.NotesApp.DataAccess.Implementations
 {
+    // Repositorium za Users
+    // Momentalno e implementiran samo GetById, a drugite metodi se NotImplementedException
     public class UserRepository : IRepository<User>
     {
         private readonly NotesAppDbContext _notesAppDbContext;

@@ -1,12 +1,21 @@
 ﻿using Avenga.NotesApp.DataAccess;
+using Avenga.NotesApp.DataAccess.Implementations;
 using Avenga.NotesApp.Domain.Models;
 using Avenga.NotesApp.Dtos.NoteDtos;
 using Avenga.NotesApp.Mappers;
 using Avenga.NotesApp.Services.Interfaces;
 using Avenga.NotesApp.Shared.CustomExceptions;
-
+// Services = sloj za biznis logika
+// Raboti so Repositories za komunikacija so WEB API slojot
+// Raboti so DTOs za komunikacija so WEB API slojot
+// Servisot e odgovoren za : Validacija, Mapiranje (Domain<->DTO)
+// Frlanje custom exceptions ako neshto ne e vo red.
 namespace Avenga.NotesApp.Services.Implementations
 {
+    // Зависности: Service зависи од IRepository<Note> и IRepository<User>.
+    // Тоа значи дека сервисот НЕ знае како точно се комуницира со базата,
+    // туку очекува некој да му даде имплементација (NoteRepository, UserRepository).
+    // Ова се решава преку Dependency Injection во Web API.
     public class NoteService : INoteService
     {
         private readonly IRepository<Note> _noteRepository;
@@ -17,7 +26,7 @@ namespace Avenga.NotesApp.Services.Implementations
             _noteRepository = noteRepository;
             _userRepository = userRepository;
         }
-
+        // AddNote (1.Valiadacii, 2. Mapiranje, 3.Zapisuvanje vo baza)
         public void AddNote(AddNoteDto addNoteDto)
         {
             //1. Validation
@@ -56,6 +65,7 @@ namespace Avenga.NotesApp.Services.Implementations
             _noteRepository.Delete(noteDb);
         }
 
+        // Servisite sekogas vrakjaat DTO kon nadvoreshniot svet, a ne direktno entiteti od bazata.
         public List<NoteDto> GetAllNotes()
         {
             var notesDb =_noteRepository.GetAll();

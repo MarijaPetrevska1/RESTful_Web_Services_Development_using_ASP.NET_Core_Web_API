@@ -1,4 +1,5 @@
 ﻿using Avenga.NotesApp.Domain.Enums;
+using Avenga.NotesApp.Dtos.NoteDtos;
 
 namespace Avenga.NotesApp.Dtos.NoteDtos
 {
@@ -11,3 +12,5 @@ namespace Avenga.NotesApp.Dtos.NoteDtos
         public int UserId { get; set; }
     }
 }
+
+// UpdateNoteDto → влезни податоци за PUT /notes/{id}.

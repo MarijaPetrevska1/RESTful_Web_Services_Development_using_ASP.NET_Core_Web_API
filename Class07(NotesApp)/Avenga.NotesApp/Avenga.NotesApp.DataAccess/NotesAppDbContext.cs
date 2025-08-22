@@ -1,17 +1,21 @@
 ﻿using Avenga.NotesApp.Domain.Models;
 using Microsoft.EntityFrameworkCore;
+// DATAACCESS SLOJOT => Tuka se slucuva povrzuvanje na modelite od Domain so realnata baza preku Entity Framework Core. 
 
+// Definira tabeli, relacii i pravila (Fluent API)
 namespace Avenga.NotesApp.DataAccess
 {
-    public class NotesAppDbContext : DbContext
+    public class NotesAppDbContext : DbContext  // nasleduva od DbContext
     {
+        // glavniot modst kon bazata
         public NotesAppDbContext(DbContextOptions options) : base(options)
         {
         }
 
-        public DbSet<Note> Notes { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Note> Notes { get; set; } // ke kreira tabela Notes
+        public DbSet<User> Users { get; set; } // ke kreira tabela Users
 
+        // So Fluent API se konfiguriraat pravilata
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

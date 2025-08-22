@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Avenga.NotesApp.DataAccess.Implementations
 {
+    // Repositorium za rabota so Notes
+    // => Sekoj metod pravi EF Core operacija + .SaveChanges() za da se zapishi vo bazata.
+
     public class NoteRepository : IRepository<Note>
     {
 
@@ -25,6 +28,8 @@ namespace Avenga.NotesApp.DataAccess.Implementations
             _notesAppDbContext.SaveChanges(); //call to db
         }
 
+        // GetAll и GetById користат .Include(x => x.User) → значи кога ќе ги земеш белешките,
+        // автоматски се вчитува и поврзаниот User.
         public List<Note> GetAll()
         {
             // Include will join note and user tables and include User data in the query result aswell
