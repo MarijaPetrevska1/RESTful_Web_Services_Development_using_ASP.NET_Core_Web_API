@@ -3,6 +3,7 @@ using Avenga.NotesApp.Dtos.NoteDtos;
 
 namespace Avenga.NotesApp.Mappers
 {
+    // NoteMapper
     public static class NoteMapper
     {
         public static NoteDto ToNoteDto(this Note note)
